@@ -20,4 +20,9 @@ interface CharacterServiceInterface
      * Modifies the characters
      */
     public function modify(Character $character);
+
+    /**
+     * Delete the characters
+     */
+    public function delete(Character $character);
 }
