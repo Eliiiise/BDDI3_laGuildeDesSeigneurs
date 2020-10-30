@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94f99272-f72b-49a3-982d-38b51bbf54b3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/LaGuildeDesSeigneurs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaGuildeDesSeigneurs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changelog" beforeDir="false" afterPath="$PROJECT_DIR$/changelog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CharacterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CharacterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Character.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/CharacterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CharacterService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -87,6 +96,14 @@
       <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
       <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jWZEFaBAD8yXnrddwjhMwrrFnN" />
@@ -98,11 +115,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Documents\projet\LaGuildeDesSeigneurs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ASUS\Documents\projet\LaGuildeDesSeigneurs\tests\controller" />
     </key>
@@ -118,7 +139,11 @@
       <option name="presentableId" value="Default" />
       <updated>1603921694598</updated>
       <workItem from="1603921695787" duration="8206000" />
-      <workItem from="1603937985757" duration="5267000" />
+      <workItem from="1603937985757" duration="7373000" />
+      <workItem from="1604047441368" duration="1262000" />
+      <workItem from="1604048838892" duration="1369000" />
+      <workItem from="1604050471124" duration="6083000" />
+      <workItem from="1604059870208" duration="1890000" />
     </task>
     <servers />
   </component>
@@ -126,17 +151,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="524" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603943964194">
+    <state x="524" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604049902180">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="524" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1603943964194" />
+    <state x="524" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1604049902180" />
     <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser" timestamp="1603934450196">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603934450196" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1603937986262">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1604049968479">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1603937986262" />
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604049968479" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1604059871439">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604059871439" />
   </component>
 </project>

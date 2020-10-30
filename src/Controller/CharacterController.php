@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Character;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Character;
 use App\Service\CharacterServiceInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class CharacterController extends AbstractController
 {
@@ -18,10 +19,9 @@ class CharacterController extends AbstractController
         $this->characterService = $characterService;
     }
 
+
     /**
-     * @Route("/character",
-     *     name="character",
-     *     methods={"GET","HEAD"})
+     * @Route("/character", name="character", methods={"GET","HEAD"})
      */
     public function index(): Response
     {
@@ -32,15 +32,15 @@ class CharacterController extends AbstractController
     }
 
     /**
-     * @Route("/character/display",
-     *     name="character_display",
-     *     methods={"GET","HEAD"})
+     * @Route("/character/display/{identifier}",
+     *      name="character_display",
+     *      requirements={"identifier": "^[a-z0-9]{40}$"},
+     *      methods={"GET","HEAD"}
+     * )
      */
-    public function display()
-    {
-        $character = new Character();
-        //dump($character);
-        //dd($character->toArray());
+    public function display(Character $character) {
+        $this->denyAccessUnlessGranted('characterDisplay', $character);
+
         return new JsonResponse($character->toArray());
     }
 
@@ -49,8 +49,9 @@ class CharacterController extends AbstractController
      *      name="character_create",
      *      methods={"POST", "HEAD"})
      */
-
     public function create() {
+        $this->denyAccessUnlessGranted('characterCreate', null);
+
         $character = $this->characterService->create();
         return new JsonResponse($character->toArray());
     }
