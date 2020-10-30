@@ -87,4 +87,13 @@ class CharacterControllerTest extends WebTestCase
         $this->assertError404($this->client->getResponse()->getStatusCode());
     }
 
+    /**
+     * Tests modify
+     */
+    public function testModify()
+    {
+        $this->client->request('PUT', '/character/modify/XXX');
+
+        $this->assertJsonResponse();
+    }
 }
