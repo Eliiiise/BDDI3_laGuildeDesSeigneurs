@@ -12,11 +12,13 @@ class CharacterVoter extends Voter
 {
     public const CHARACTER_DISPLAY = 'characterDisplay';
     public const CHARACTER_CREATE = 'characterCreate';
+    public const CHARACTER_INDEX = 'characterIndex';
 
 
     private const ATTRIBUTES = array(
         self::CHARACTER_DISPLAY,
         self::CHARACTER_CREATE,
+        self::CHARACTER_INDEX,
     );
 
     /**
@@ -40,6 +42,7 @@ class CharacterVoter extends Voter
     {
         switch ($attribute) {
             case self::CHARACTER_DISPLAY:
+            case self::CHARACTER_INDEX:
                 // peut envoyer $token et $subject pour tester des conditions
                 return $this->canDisplay();
                 break;
@@ -68,4 +71,5 @@ class CharacterVoter extends Voter
     public function canCreate(){
         return true;
     }
+
 }

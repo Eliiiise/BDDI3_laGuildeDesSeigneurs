@@ -7,6 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class CharacterControllerTest extends WebTestCase
 {
     /**
+    * Tests redirect index
+    */
+
+    public function getRedirectIndex()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/character');
+
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+    }
+
+    /**
      * Tests index
      */
     public function testIndex()
@@ -46,6 +58,33 @@ class CharacterControllerTest extends WebTestCase
     {
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($response->headers->contains('Content-Type', 'application/json'), $response->headers);
+    }
+
+    /**
+     * Tests redirect bad identifier
+     */
+
+    public function testBadIdentifier()
+    {
+        $this->client->request('GET', '/character/display/badIdentifier');
+        $this->asserError404($this->client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * Asserts that Rsponse returns 404
+     */
+    public function assertError404($statusCode)
+    {
+        $this->assertEquals(404, $statusCode);
+    }
+
+    /**
+     * Tests inexisting identifier
+     */
+    public function testInexistingIdentifier()
+    {
+        $this->client->request('GET', '/character/display/');
+        $this->assertError404($this->client->getResponse()->getStatusCode());
     }
 
 }
