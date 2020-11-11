@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="94f99272-f72b-49a3-982d-38b51bbf54b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CharacterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CharacterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/Voter/CharacterVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/Voter/CharacterVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/CharacterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CharacterService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/CharacterServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CharacterServiceInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controller/CharacterControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/CharacterControllerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +107,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maeva" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
@@ -139,6 +134,11 @@
       <workItem from="1604048838892" duration="1369000" />
       <workItem from="1604050471124" duration="6083000" />
       <workItem from="1604059870208" duration="10750000" />
+      <workItem from="1604080406172" duration="599000" />
+      <workItem from="1604517226126" duration="608000" />
+      <workItem from="1604523949299" duration="335000" />
+      <workItem from="1604605997169" duration="362000" />
+      <workItem from="1605025861039" duration="3677000" />
     </task>
     <servers />
   </component>
@@ -154,14 +154,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603934450196" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605027555994">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605027555994" />
     <state x="604" y="336" key="NewPhpFileDialog" timestamp="1604049968479">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604049968479" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1604059871439">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1605025861697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604059871439" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1605025861697" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1604068744908">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
