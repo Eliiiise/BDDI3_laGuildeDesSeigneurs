@@ -4,42 +4,42 @@ namespace App\Service;
 
 use DateTime;
 use App\Entity\Character;
+use App\Form\CharacterType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CharacterRepository;
+use LogicException;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class CharacterService implements CharacterServiceInterface
 {
     private $em;
     private $characterRepository;
+    private $formFactory;
 
     public function __construct(
         CharacterRepository $characterRepository,
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        FormFactoryInterface $formFactory
     ){
         $this->characterRepository = $characterRepository;
         $this->em = $em;
+        $this->formFactory = $formFactory;
     }
 
-    public function create()
+    public function create(string $data)
     {
+        //Use with {"kind":"Dame","name":"Eldalótë","surname":"Fleur elfique","caste":"Elfe","knowledge":"Arts","intelligence":120,"life":12,"image":"/images/eldalote.jpg"}
         $character = new Character();
         $character
-            ->setKind('Dame')
-            ->setName('Athelleen')
-            ->setSurname('Guerrière des flammes')
-            ->setCaste('Guerrier')
-            ->setKnowledge('Cartographie')
-            ->setIntelligence(90)
-            ->setLife(15)
-            ->setCreation(new \DateTime())
             ->setIdentifier(hash('sha1', uniqid()))
-            ->setModification(new \DateTime())
+            ->setCreation(new DateTime())
+            ->setModification(new DateTime())
         ;
+        $this->submit($character, CharacterType::class, $data);
+        $this->isEntityFilled($character);
 
-        //tell Doctrine you want to save the Character (no queries yet)
         $this->em->persist($character);
-
-        //actually executes the queries (i.e. the INSERT query)
         $this->em->flush();
 
         return $character;
@@ -61,16 +61,11 @@ class CharacterService implements CharacterServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function modify(Character $character)
+    public function modify(Character $character, String $data)
     {
+        $this->submit($character, CharacterType::class, $data);
+        $this->isEntityFilled($character);
         $character
-            ->setKind('Dame')
-            ->setName('Athelleen')
-            ->setSurname('Guerrière des flammes')
-            ->setCaste('Guerrier')
-            ->setKnowledge('Cartographie')
-            ->setIntelligence(90)
-            ->setLife(15)
             ->setModification(new \DateTime())
         ;
 
@@ -89,6 +84,44 @@ class CharacterService implements CharacterServiceInterface
         $this->em->flush();
 
         return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isEntityFilled(Character $character)
+    {
+        if (null === $character->getKind() ||
+            null === $character->getName() ||
+            null === $character->getSurname() ||
+            null === $character->getIdentifier() ||
+            null === $character->getCreation() ||
+            null === $character->getModification()) {
+            throw new UnprocessableEntityHttpException('Missing data for Entity -> ' . json_encode($character->toArray()));
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function submit($character, $formName, $data)
+    {
+        $dataArray = is_array($data) ? $data : json_decode($data, true);
+
+        //Bad array
+        if (null !== $data && !is_array($dataArray)) {
+            throw new UnprocessableEntityHttpException('Submitted data is not an array -> ' . $data);
+        }
+
+        //Submits form
+        $form = $this->formFactory->create($formName, $character, ['csrf_protection' => false]);
+        $form->submit($dataArray, false);//With false, only submitted fields are validated
+
+        //Gets errors
+        $errors = $form->getErrors();
+        foreach ($errors as $error) {
+            throw new LogicException('Error ' . get_class($error->getCause()) . ' --> ' . $error->getMessageTemplate() . ' ' . json_encode($error->getMessageParameters()));
+        }
     }
 
 }

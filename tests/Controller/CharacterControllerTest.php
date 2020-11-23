@@ -2,6 +2,8 @@
 
 namespace App\Tests\Controller;
 
+use App\Entity\Character;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CharacterControllerTest extends WebTestCase
@@ -32,10 +34,27 @@ class CharacterControllerTest extends WebTestCase
      */
     public function testIndex()
     {
-        $client = static::createClient();
-        $client->request('GET', '/character');
+        $this->client->request('GET', '/character/index');
 
-        $this->assertJsonResponse($client->getResponse());
+        $this->assertJsonResponse($this->client->getResponse());
+    }
+
+    /**
+     * Tests Create
+     */
+    public function testCreate()
+    {
+        $this->client->request('POST',
+            '/character/create',
+            array(),//parameters
+            array(),//file
+            array('CONTENT_TYPE' => 'application/json'),//server
+            '{"kind":"Dame","name":"Eldalótë","surname":"Fleur elfique","caste":"Elfe","knowledge":"Arts","intelligence":120,"life":12,"image":"/images/eldalote.jpg"}'
+        );
+
+        $this->assertJsonResponse();
+        $this->defineIdentifier();
+        $this->assertIdentifier();
     }
 
     /**
@@ -45,19 +64,7 @@ class CharacterControllerTest extends WebTestCase
     {
         $this->client->request('GET', '/character/display/' . self::$identifier);
 
-        $this->assertJsonResponse();
-        $this->assertIdentifier();
-    }
-
-    /**
-     * Tests Create
-     */
-    public function testCreate()
-    {
-        $this->client->request('POST', '/character/create');
-
-        $this->assertJsonResponse();
-        $this->defineIdentifier();
+        $this->assertJsonResponse($this->client->getResponse());
         $this->assertIdentifier();
     }
 
@@ -80,11 +87,11 @@ class CharacterControllerTest extends WebTestCase
     public function testBadIdentifier()
     {
         $this->client->request('GET', '/character/display/badIdentifier');
-        $this->asserError404($this->client->getResponse()->getStatusCode());
+        $this->assertError404($this->client->getResponse()->getStatusCode());
     }
 
     /**
-     * Asserts that Rsponse returns 404
+     * Asserts that Response returns 404
      */
     public function assertError404($statusCode)
     {
@@ -103,11 +110,29 @@ class CharacterControllerTest extends WebTestCase
     /**
      * Tests modify
      */
-    public function testModify()
-    {
-        $this->client->request('PUT', '/character/modify/' . self::$identifier);
+    public function testModify(){
+        //Test with partial data array
+        $this->client->request(
+            'PUT',
+            '/character/modify/' . self::$identifier,
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'),
+            '{"kind":"Dame","name":"Eldalóta"}'
+        );
+        $this->assertJsonResponse($this->client->getResponse());
+        $this->assertIdentifier();
 
-        $this->assertJsonResponse();
+        //Test with whole content
+        $this->client->request(
+            'PUT',
+            '/character/modify/' . self::$identifier,
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'),
+            '{"kind":"Seigneur","name":"Gorthol","surname":"Heaume de terreur","caste":"Chevalier","knowledge":"Diplomatie","intelligence":200,"life":9,"image":"/images/test.jpg"}'
+        );
+        $this->assertJsonResponse($this->client->getResponse());
         $this->assertIdentifier();
     }
 

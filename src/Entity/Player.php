@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PlayerRepository::class)
+ * @ORM\Table(name="players")
  */
 class Player
 {
@@ -28,7 +29,7 @@ class Player
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
 
@@ -56,6 +57,14 @@ class Player
      * @ORM\Column(type="string", length=40)
      */
     private $identifier;
+
+    /**
+     * Converts the entity in an array
+     */
+    public function toArray()
+    {
+        return get_object_vars($this);
+    }
 
     public function getId(): ?int
     {

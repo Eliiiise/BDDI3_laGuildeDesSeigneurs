@@ -1,28 +1,44 @@
 <?php
 
 namespace App\Service;
-
 use App\Entity\Player;
 
-interface PlayerServiceInterface
-{
-    /**
-     * Creates the player
-     */
-    public function create();
+interface PlayerServiceInterface {
 
     /**
-     * Gets all the players
+     * Create the player
+     */
+
+    public function create(String $data);
+
+    /**
+     * Display all the players
      */
     public function getAll();
 
     /**
-     * Modifies the player
+     * Modify a player
      */
-    public function modify(Player $player);
+
+    public function modify(Player $player, String $data);
 
     /**
-     * Delete the player
+     * Checks if the netity has been well filled
      */
+
+    public function isEntityFilled(Player $player);
+
+    /**
+     * Submits the date to hydrate the object
+     */
+
+    public function submit(Player $player, $formName, $data);
+
+
+    /**
+     * Delete a player
+     */
+
     public function delete(Player $player);
+
 }

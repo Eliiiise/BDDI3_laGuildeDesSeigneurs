@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Character;
 use App\Service\CharacterServiceInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class CharacterController extends AbstractController
@@ -64,10 +65,11 @@ class CharacterController extends AbstractController
      *      name="character_create",
      *      methods={"POST", "HEAD"})
      */
-    public function create() {
+    public function create(Request $request) {
+
         $this->denyAccessUnlessGranted('characterCreate', null);
 
-        $character = $this->characterService->create();
+        $character = $this->characterService->create($request->getContent());
         return new JsonResponse($character->toArray());
     }
 
@@ -78,10 +80,10 @@ class CharacterController extends AbstractController
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"PUT", "HEAD"})
      */
-    public function modify(Character $character) {
+    public function modify(Request $request, Character $character) {
         $this->denyAccessUnlessGranted('characterModify', $character);
 
-        $character = $this->characterService->modify($character);
+        $character = $this->characterService->modify($character, $request->getContent());
 
         return new JsonResponse($character->toArray());
     }
@@ -94,7 +96,7 @@ class CharacterController extends AbstractController
      *     methods={"DELETE", "HEAD"})
      */
     public function delete(Character $character) {
-        $this->denyAccessUnlessGranted('characterDelete', $character);
+        $this->denyAccessUnlessGranted('characterDelete', null);
 
         $reponse = $this->characterService->delete($character);
 
