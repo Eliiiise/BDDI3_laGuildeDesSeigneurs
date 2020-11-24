@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
 
 class PlayerController extends AbstractController
 {
@@ -39,6 +41,26 @@ class PlayerController extends AbstractController
      *     name="player_index",
      *     methods={"GET","HEAD"}
      *     )
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Player",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Player::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Player")
      */
     public function index(): Response
     {
@@ -56,6 +78,26 @@ class PlayerController extends AbstractController
      *      methods={"GET","HEAD"}
      * )
      * @Entity("player", expr="repository.findOneByIdentifier(identifier)")
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Player",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Player::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Player")
      */
     public function display(Player $player)
     {
@@ -68,6 +110,26 @@ class PlayerController extends AbstractController
      * @Route("/player/create",
      *      name="player_create",
      *      methods={"POST", "HEAD"})
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Player",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Player::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Player")
      */
     public function create(Request $request)
     {
@@ -83,6 +145,26 @@ class PlayerController extends AbstractController
      *     name="player_modify",
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"PUT", "HEAD"})
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Player",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Player::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Player")
      */
     public function modify(Request $request, Player $player)
     {
@@ -99,6 +181,26 @@ class PlayerController extends AbstractController
      *     name="player_delete",
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"DELETE", "HEAD"})
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Player",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Player::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Player")
      */
     public function delete(Player $player)
     {

@@ -10,6 +10,8 @@ use App\Service\CharacterServiceInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
 
 class CharacterController extends AbstractController
 {
@@ -37,6 +39,26 @@ class CharacterController extends AbstractController
      *     name="character_index",
      *     methods={"GET","HEAD"}
      *     )
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Character",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Character::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Character")
      */
     public function index(): Response
     {
@@ -54,6 +76,26 @@ class CharacterController extends AbstractController
      *      methods={"GET","HEAD"}
      * )
      * @Entity("player", expr="repository.findOneByIdentifier(identifier)")
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Character",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Character::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Character")
      */
     public function display(Character $character)
     {
@@ -66,6 +108,26 @@ class CharacterController extends AbstractController
      * @Route("/character/create",
      *      name="character_create",
      *      methods={"POST", "HEAD"})
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Character",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Character::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Character")
      */
     public function create(Request $request)
     {
@@ -81,6 +143,26 @@ class CharacterController extends AbstractController
      *     name="character_modify",
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"PUT", "HEAD"})
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Character",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Character::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Character")
      */
     public function modify(Request $request, Character $character)
     {
@@ -97,6 +179,26 @@ class CharacterController extends AbstractController
      *     name="character_delete",
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"DELETE", "HEAD"})
+     * @OA\Parameter(
+     *     name="identifier",
+     *     in="path",
+     *     description="identifier for the Character",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @Model(type=Character::class)
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Not Found",
+     * )
+     * @OA\Tag(name="Character")
      */
     public function delete(Character $character)
     {
