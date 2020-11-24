@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
-
 class CharacterController extends AbstractController
 {
     private $characterService;
@@ -56,7 +55,8 @@ class CharacterController extends AbstractController
      * )
      * @Entity("player", expr="repository.findOneByIdentifier(identifier)")
      */
-    public function display(Character $character) {
+    public function display(Character $character)
+    {
         $this->denyAccessUnlessGranted('characterDisplay', $character);
 
         return new JsonResponse($character->toArray());
@@ -67,8 +67,8 @@ class CharacterController extends AbstractController
      *      name="character_create",
      *      methods={"POST", "HEAD"})
      */
-    public function create(Request $request) {
-
+    public function create(Request $request)
+    {
         $this->denyAccessUnlessGranted('characterCreate', null);
 
         $character = $this->characterService->create($request->getContent());
@@ -82,7 +82,8 @@ class CharacterController extends AbstractController
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"PUT", "HEAD"})
      */
-    public function modify(Request $request, Character $character) {
+    public function modify(Request $request, Character $character)
+    {
         $this->denyAccessUnlessGranted('characterModify', $character);
 
         $character = $this->characterService->modify($character, $request->getContent());
@@ -97,7 +98,8 @@ class CharacterController extends AbstractController
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"DELETE", "HEAD"})
      */
-    public function delete(Character $character) {
+    public function delete(Character $character)
+    {
         $this->denyAccessUnlessGranted('characterDelete', null);
 
         $reponse = $this->characterService->delete($character);

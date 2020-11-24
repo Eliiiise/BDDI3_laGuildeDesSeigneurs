@@ -24,7 +24,7 @@ class PlayerService implements PlayerServiceInterface
         EntityManagerInterface $em,
         FormFactoryInterface $formFactory,
         ValidatorInterface $validator
-    ){
+    ) {
         $this->playerRepository = $playerRepository;
         $this->em = $em;
         $this->formFactory = $formFactory;
@@ -125,5 +125,4 @@ class PlayerService implements PlayerServiceInterface
             throw new LogicException('Error ' . get_class($error->getCause()) . ' --> ' . $error->getMessageTemplate() . ' ' . json_encode($error->getMessageParameters()));
         }
     }
-
 }

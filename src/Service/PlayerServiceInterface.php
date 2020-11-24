@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Service;
+
 use App\Entity\Player;
 
-interface PlayerServiceInterface {
+interface PlayerServiceInterface
+{
 
     /**
      * Create the player
@@ -40,5 +42,4 @@ interface PlayerServiceInterface {
      */
 
     public function delete(Player $player);
-
 }

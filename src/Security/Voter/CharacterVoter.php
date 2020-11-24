@@ -31,8 +31,7 @@ class CharacterVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-
-        if(null !== $subject){
+        if (null !== $subject) {
             return $subject instanceof Character && in_array($attribute, self::ATTRIBUTES);
         }
         return in_array($attribute, self::ATTRIBUTES);
@@ -65,14 +64,14 @@ class CharacterVoter extends Voter
         }
 
         throw new LogicException('Invalid attribute: ' . $attribute);
-
     }
 
     /**
      * Check if is allowed to display
      */
 
-    public function canDisplay(){
+    public function canDisplay()
+    {
         return true;
     }
 
@@ -80,7 +79,8 @@ class CharacterVoter extends Voter
      * Check if is allowed to create
      */
 
-    public function canCreate(){
+    public function canCreate()
+    {
         return true;
     }
 
@@ -88,7 +88,8 @@ class CharacterVoter extends Voter
      * Check if is allowed to modify
      */
 
-    public function canModify(){
+    public function canModify()
+    {
         return true;
     }
 
@@ -96,8 +97,8 @@ class CharacterVoter extends Voter
      * Check if is allowed to delete
      */
 
-    public function canDelete(){
+    public function canDelete()
+    {
         return true;
     }
-
 }

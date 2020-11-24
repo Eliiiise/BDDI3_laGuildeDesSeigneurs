@@ -48,7 +48,7 @@ class PlayerRepository extends ServiceEntityRepository
     }
     */
 
-    public  function  findOneByIdentifier($identifier)
+    public function findOneByIdentifier($identifier)
     {
         return $this->createQueryBuilder('p')
             ->select('p', 'c')

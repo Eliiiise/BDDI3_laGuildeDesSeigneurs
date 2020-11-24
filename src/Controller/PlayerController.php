@@ -57,7 +57,8 @@ class PlayerController extends AbstractController
      * )
      * @Entity("player", expr="repository.findOneByIdentifier(identifier)")
      */
-    public function display(Player $player) {
+    public function display(Player $player)
+    {
         $this->denyAccessUnlessGranted('playerDisplay', $player);
 
         return new JsonResponse($player->toArray());
@@ -68,7 +69,8 @@ class PlayerController extends AbstractController
      *      name="player_create",
      *      methods={"POST", "HEAD"})
      */
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $this->denyAccessUnlessGranted('playerCreate', null);
 
         $player = $this->playerService->create($request->getContent());
@@ -82,7 +84,8 @@ class PlayerController extends AbstractController
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"PUT", "HEAD"})
      */
-    public function modify(Request $request, Player $player) {
+    public function modify(Request $request, Player $player)
+    {
         $this->denyAccessUnlessGranted('playerModify', $player);
 
         $player = $this->playerService->modify($player, $request->getContent());
@@ -97,12 +100,12 @@ class PlayerController extends AbstractController
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
      *     methods={"DELETE", "HEAD"})
      */
-    public function delete(Player $player) {
+    public function delete(Player $player)
+    {
         $this->denyAccessUnlessGranted('playerDelete', $player);
 
         $player = $this->playerService->delete($player);
 
         return new JsonResponse(array('delete' => $player));
     }
-
 }

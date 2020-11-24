@@ -48,7 +48,7 @@ class CharacterRepository extends ServiceEntityRepository
     }
     */
 
-    public  function  findOneByIdentifier($identifier)
+    public function findOneByIdentifier($identifier)
     {
         return $this->createQueryBuilder('c')
             ->select('c', 'p')
