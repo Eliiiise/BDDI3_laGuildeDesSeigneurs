@@ -56,7 +56,7 @@ class PlayerControllerTest extends WebTestCase
             array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'), //server
-            '{"firstname":"Chloé","lastname":"Mabboux","email":"chloe@mabboux.fr","mirian":"10","character_played":"1", "password":"sdkdksdk"}');
+            '{"firstname":"Chloé","lastname":"Mabboux","email":"chloe@mabboux.fr","mirian":"10", "password":"sdkdksdk"}');
         $this->assertJsonResponse($this->client->getResponse());
 
         $this->assertIdentifier();
@@ -119,7 +119,7 @@ class PlayerControllerTest extends WebTestCase
             array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
-            '{"firstname":"Chloé","lastname":"Mabboux","email":"chloe@mabboux.fr","mirian":"10","character_played":"1", "password":"sdkdksdk"}');
+            '{"firstname":"Chloé","lastname":"Mabboux","email":"chloe@mabboux.fr","mirian":"10", "password":"sdkdksdk"}');
         $this->assertJsonResponse($this->client->getResponse());
         $this->assertIdentifier();
     }

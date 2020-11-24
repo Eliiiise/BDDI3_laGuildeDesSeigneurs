@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\PlayerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PlayerRepository::class)
@@ -20,16 +23,28 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=16)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 16,
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 64,
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
 
@@ -40,6 +55,11 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 6,
+     *     max = 64,
+     * )
      */
     private $password;
 
@@ -55,15 +75,48 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 40,
+     *     max = 40,
+     * )
      */
     private $identifier;
 
     /**
+     * @ORM\OneToMany(targetEntity=Character::class, mappedBy="player")
+     */
+    private $characters;
+
+    public function __construct()
+    {
+        $this->characters = new ArrayCollection();
+    }
+
+    /**
      * Converts the entity in an array
      */
-    public function toArray()
+    public function toArray(bool $expand = true)
     {
-        return get_object_vars($this);
+        $player = get_object_vars($this);
+
+        if($expand && null !== $this->getCharacters()) {
+            $characters = array();
+            foreach ($this->getCharacters() as $character) {
+                $characters[] = $character->toArray(false);
+            }
+            $player['characters'] = $characters;
+        }
+
+        //specific data
+        if(null !== $player['creation']) {
+            $player['creation'] = $player['creation']->format('Y-m-d H:i:s');
+        }
+        if(null !== $player['modification']) {
+            $player['modification'] = $player['modification']->format('Y-m-d H:i:s');
+        }
+
+        return $player;
     }
 
     public function getId(): ?int
@@ -163,6 +216,36 @@ class Player
     public function setIdentifier(string $identifier): self
     {
         $this->identifier = $identifier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Character[]
+     */
+    public function getCharacters(): Collection
+    {
+        return $this->characters;
+    }
+
+    public function addCharacter(Character $character): self
+    {
+        if (!$this->characters->contains($character)) {
+            $this->characters[] = $character;
+            $character->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharacter(Character $character): self
+    {
+        if ($this->characters->removeElement($character)) {
+            // set the owning side to null (unless already changed)
+            if ($character->getPlayer() === $this) {
+                $character->setPlayer(null);
+            }
+        }
 
         return $this;
     }

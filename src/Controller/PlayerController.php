@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 class PlayerController extends AbstractController
 {
@@ -54,6 +55,7 @@ class PlayerController extends AbstractController
      *      requirements={"identifier": "^[a-z0-9]{40}$"},
      *      methods={"GET","HEAD"}
      * )
+     * @Entity("player", expr="repository.findOneByIdentifier(identifier)")
      */
     public function display(Player $player) {
         $this->denyAccessUnlessGranted('playerDisplay', $player);
@@ -102,4 +104,5 @@ class PlayerController extends AbstractController
 
         return new JsonResponse(array('delete' => $player));
     }
+
 }

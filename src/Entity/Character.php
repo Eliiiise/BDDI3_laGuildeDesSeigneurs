@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CharacterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CharacterRepository::class)
@@ -20,21 +21,40 @@ class Character
 
     /**
      * @ORM\Column(type="string", length=16)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 16,
+     * )
      */
     private $name = 'Nolofinve';
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 64,
+     * )
      */
     private $surname = 'Sagesse';
 
     /**
      * @ORM\Column(type="string", length=16)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 16,
+     * )
      */
     private $caste = 'Chevalier';
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 16,
+     * )
      */
     private $knowledge = 'Diplomatie';
 
@@ -50,11 +70,21 @@ class Character
 
     /**
      * @ORM\Column(type="string", length=128, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 5,
+     *     max = 128,
+     * )
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=16)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 16,
+     * )
      */
     private $kind;
 
@@ -65,6 +95,11 @@ class Character
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 40,
+     *     max = 40,
+     * )
      */
     private $identifier;
 
@@ -72,6 +107,11 @@ class Character
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $modification;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Player::class, inversedBy="characters")
+     */
+    private $player;
 
     public function getId(): ?int
     {
@@ -165,9 +205,23 @@ class Character
     /**
      * Converts the entity in an array
      */
-    public function toArray()
+    public function toArray(bool $expand = true)
     {
-        return get_object_vars($this);
+        $character = get_object_vars($this);
+
+        if($expand && null !== $this->getPlayer()) {
+            $character['player'] = $this->getPlayer()->toArray(false);
+        }
+
+        //specific data
+        if(null !== $character['creation']) {
+            $character['creation'] = $character['creation']->format('Y-m-d H:i:s');
+        }
+        if(null !== $character['modification']) {
+            $character['modification'] = $character['modification']->format('Y-m-d H:i:s');
+        }
+
+        return $character;
     }
 
     public function getKind(): ?string
@@ -214,6 +268,18 @@ class Character
     public function setModification(?\DateTimeInterface $modification): self
     {
         $this->modification = $modification;
+
+        return $this;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
+    }
+
+    public function setPlayer(?Player $player): self
+    {
+        $this->player = $player;
 
         return $this;
     }
