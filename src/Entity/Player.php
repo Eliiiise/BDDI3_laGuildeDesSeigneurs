@@ -22,7 +22,7 @@ class Player
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=16)
+     * @ORM\Column(type="string", length=16, name="gls_firstname")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 3,
@@ -32,7 +32,7 @@ class Player
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, name="gls_lastname")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 3,
@@ -42,19 +42,19 @@ class Player
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, name="gls_email")
      * @Assert\NotBlank
      * @Assert\Email
      */
     private $email;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, name="gls_mirian")
      */
     private $mirian;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, name="gls_password")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 6,
@@ -64,17 +64,17 @@ class Player
     private $password;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", name="gls_creation")
      */
     private $creation;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", name="gls_modification")
      */
     private $modification;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, name="gls_identifier")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 40,

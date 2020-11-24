@@ -20,7 +20,7 @@ class Character
     private $id = 1;
 
     /**
-     * @ORM\Column(type="string", length=16)
+     * @ORM\Column(type="string", length=16, name="gls_name")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 3,
@@ -30,7 +30,7 @@ class Character
     private $name = 'Nolofinve';
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, name="gls_surname")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 3,
@@ -40,7 +40,7 @@ class Character
     private $surname = 'Sagesse';
 
     /**
-     * @ORM\Column(type="string", length=16)
+     * @ORM\Column(type="string", length=16, name="gls_caste")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 3,
@@ -50,7 +50,7 @@ class Character
     private $caste = 'Chevalier';
 
     /**
-     * @ORM\Column(type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=16, nullable=true, name="gls_knowledge")
      * @Assert\Length(
      *     min = 3,
      *     max = 16,
@@ -59,17 +59,17 @@ class Character
     private $knowledge = 'Diplomatie';
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, name="gls_intelligence")
      */
     private $intelligence = 110;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, name="gls_life")
      */
     private $life = 13;
 
     /**
-     * @ORM\Column(type="string", length=128, nullable=true)
+     * @ORM\Column(type="string", length=128, nullable=true, name="gls_image")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 5,
@@ -79,7 +79,7 @@ class Character
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=16)
+     * @ORM\Column(type="string", length=16, name="gls_kind")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 3,
@@ -89,12 +89,12 @@ class Character
     private $kind;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", name="gls_creation")
      */
     private $creation;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, name="gls_identifier")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min = 40,
@@ -104,7 +104,7 @@ class Character
     private $identifier;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, name="gls_modification")
      */
     private $modification;
 
