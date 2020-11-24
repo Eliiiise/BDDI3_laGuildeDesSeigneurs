@@ -39,12 +39,6 @@ class CharacterController extends AbstractController
      *     name="character_index",
      *     methods={"GET","HEAD"}
      *     )
-     * @OA\Parameter(
-     *     name="identifier",
-     *     in="path",
-     *     description="identifier for the Character",
-     *     required=true,
-     *     )
      * @OA\Response(
      *     response=200,
      *     description="success",

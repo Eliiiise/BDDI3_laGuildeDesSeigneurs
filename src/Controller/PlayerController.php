@@ -41,12 +41,6 @@ class PlayerController extends AbstractController
      *     name="player_index",
      *     methods={"GET","HEAD"}
      *     )
-     * @OA\Parameter(
-     *     name="identifier",
-     *     in="path",
-     *     description="identifier for the Player",
-     *     required=true,
-     *     )
      * @OA\Response(
      *     response=200,
      *     description="success",
