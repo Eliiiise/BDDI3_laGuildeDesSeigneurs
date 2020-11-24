@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Event\PlayerEvent;
 use DateTime;
 use App\Entity\Player;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +12,8 @@ use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use App\Form\PlayerType;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use LogicException;
+use App\Event\CharacterEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class PlayerService implements PlayerServiceInterface
 {
@@ -18,17 +21,20 @@ class PlayerService implements PlayerServiceInterface
     private $playerRepository;
     private $formFactory;
     private $validator;
+    private $dispatcher;
 
     public function __construct(
         PlayerRepository $playerRepository,
         EntityManagerInterface $em,
         FormFactoryInterface $formFactory,
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        EventDispatcherInterface $dispatcher
     ) {
         $this->playerRepository = $playerRepository;
         $this->em = $em;
         $this->formFactory = $formFactory;
         $this->validator = $validator;
+        $this->dispatcher = $dispatcher;
     }
 
     public function create(String $data)
@@ -74,6 +80,9 @@ class PlayerService implements PlayerServiceInterface
         $player
             ->setModification(new \DateTime())
         ;
+
+        $event = new PlayerEvent($player);
+        $this->dispatcher->dispatch($event, PlayerEvent::PLAYER_MODIFIED);
 
         $this->em->persist($player);
         $this->em->flush();

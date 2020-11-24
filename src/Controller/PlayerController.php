@@ -27,9 +27,12 @@ class PlayerController extends AbstractController
     /**
      * @Route("/player",
      *     name="player_redirect_index",
-     *
-     *
      *     )
+     * @OA\Response(
+     *     response=302,
+     *     description="Redirect",
+     * )
+     * @OA\Tag(name="Player")
      */
     public function redirectIndex()
     {
@@ -44,15 +47,14 @@ class PlayerController extends AbstractController
      * @OA\Response(
      *     response=200,
      *     description="success",
-     *     @Model(type=Player::class)
+     *     @OA\Schema(
+     *          type="array",
+     *          @OA\Items(ref=@Model(type=Player::class))
+     *      )
      * )
      * @OA\Response(
      *     response=403,
      *     description="Access denied",
-     * )
-     * @OA\Response(
-     *     response=404,
-     *     description="Not Found",
      * )
      * @OA\Tag(name="Player")
      */
@@ -104,12 +106,6 @@ class PlayerController extends AbstractController
      * @Route("/player/create",
      *      name="player_create",
      *      methods={"POST", "HEAD"})
-     * @OA\Parameter(
-     *     name="identifier",
-     *     in="path",
-     *     description="identifier for the Player",
-     *     required=true,
-     *     )
      * @OA\Response(
      *     response=200,
      *     description="success",
@@ -119,9 +115,14 @@ class PlayerController extends AbstractController
      *     response=403,
      *     description="Access denied",
      * )
-     * @OA\Response(
-     *     response=404,
-     *     description="Not Found",
+     * @OA\RequestBody(
+     *     request="Player",
+     *     description="Data for the Player",
+     *     required=true,
+     *     @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(ref="#/components/schemas/Player")
+     *     )
      * )
      * @OA\Tag(name="Player")
      */
@@ -154,9 +155,14 @@ class PlayerController extends AbstractController
      *     response=403,
      *     description="Access denied",
      * )
-     * @OA\Response(
-     *     response=404,
-     *     description="Not Found",
+     * @OA\RequestBody(
+     *     request="Player",
+     *     description="Data for the Player",
+     *     required=true,
+     *     @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(ref="#/components/schemas/Player")
+     *     )
      * )
      * @OA\Tag(name="Player")
      */
@@ -174,25 +180,24 @@ class PlayerController extends AbstractController
      * @Route("/player/delete/{identifier}",
      *     name="player_delete",
      *     requirements={"identifier": "^[a-z0-9]{40}$"},
-     *     methods={"DELETE", "HEAD"})
-     * @OA\Parameter(
-     *     name="identifier",
-     *     in="path",
-     *     description="identifier for the Player",
-     *     required=true,
+     *     methods={"DELETE", "HEAD"}
      *     )
      * @OA\Response(
-     *     response=200,
-     *     description="success",
-     *     @Model(type=Player::class)
+     *      response=200,
+     *      description="Success",
+     *      @OA\Schema(
+     *          @OA\Property(property="delete", type="boolean"),
+     *      )
      * )
      * @OA\Response(
-     *     response=403,
-     *     description="Access denied",
+     *      response=403,
+     *      description="Access denied",
      * )
-     * @OA\Response(
-     *     response=404,
-     *     description="Not Found",
+     * @OA\Parameter(
+     *      name="identifier",
+     *      in="path",
+     *      description="identifier for the Player",
+     *      required=true,
      * )
      * @OA\Tag(name="Player")
      */
