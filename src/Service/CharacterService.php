@@ -84,11 +84,9 @@ class CharacterService implements CharacterServiceInterface
     public function getByIntelligence(int $intelligence)
     {
         $charactersFinal = array();
-        $characters = $this->characterRepository->findAll();
+        $characters = $this->characterRepository->findByIntelligence($intelligence);
         foreach ($characters as $character) {
-            if ($character->toArray()["intelligence"] >= $intelligence) {
-                $charactersFinal[] = $character->toArray();
-            }
+            $charactersFinal[] = $character->toArray();
         }
         return $charactersFinal;
     }

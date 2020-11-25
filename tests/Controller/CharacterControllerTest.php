@@ -69,7 +69,7 @@ class CharacterControllerTest extends WebTestCase
     }
 
     /**
-     * Tests Display
+     * Tests DisplayByIntelligence
      */
     public function testDisplayByIntelligence()
     {
