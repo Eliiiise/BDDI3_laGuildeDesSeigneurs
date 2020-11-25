@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94f99272-f72b-49a3-982d-38b51bbf54b3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Event/CharacterEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Event/CharacterListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Event/PlayerEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Event/PlayerListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LaGuildeDesSeigneurs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaGuildeDesSeigneurs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CharacterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CharacterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PlayerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Character.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/CharacterService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CharacterService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/PlayerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/PlayerService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/CharacterServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CharacterServiceInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/CharacterControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/CharacterControllerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +127,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jWZEFaBAD8yXnrddwjhMwrrFnN" />
@@ -208,10 +211,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1606116965580" />
-    <state x="463" y="144" width="609" height="536" key="find.popup" timestamp="1606136098680">
+    <state x="463" y="144" width="609" height="536" key="find.popup" timestamp="1606301239105">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="463" y="144" width="609" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1606136098680" />
+    <state x="463" y="144" width="609" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1606301239105" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1604068744908">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

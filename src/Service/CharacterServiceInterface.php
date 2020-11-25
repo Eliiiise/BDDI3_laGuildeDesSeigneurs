@@ -35,4 +35,14 @@ interface CharacterServiceInterface
      * Submits the data to hydrate the object
      */
     public function submit(Character $character, $formName, $data);
+
+    /**
+     * Creates the character from html form
+     */
+    public function createFromHtml(Character $character);
+
+    /**
+     * Creates the character from html form
+     */
+    public function modifyFromHtml(Character $character);
 }
