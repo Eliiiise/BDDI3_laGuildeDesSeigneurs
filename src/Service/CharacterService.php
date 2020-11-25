@@ -81,6 +81,21 @@ class CharacterService implements CharacterServiceInterface
     /**
      * {@inheritdoc}
      */
+    public function getByIntelligence(int $intelligence)
+    {
+        $charactersFinal = array();
+        $characters = $this->characterRepository->findAll();
+        foreach ($characters as $character) {
+            if ($character->toArray()["intelligence"] >= $intelligence) {
+                $charactersFinal[] = $character->toArray();
+            }
+        }
+        return $charactersFinal;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function modify(Character $character, String $data)
     {
         $this->submit($character, CharacterType::class, $data);

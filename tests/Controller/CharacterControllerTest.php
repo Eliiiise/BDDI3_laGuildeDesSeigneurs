@@ -69,6 +69,16 @@ class CharacterControllerTest extends WebTestCase
     }
 
     /**
+     * Tests Display
+     */
+    public function testDisplayByIntelligence()
+    {
+        $this->client->request('GET', '/character/display/intelligence/250');
+
+        $this->assertJsonResponse($this->client->getResponse());
+    }
+
+    /**
     * Asserts that a response is in json
     */
 

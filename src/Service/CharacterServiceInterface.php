@@ -17,6 +17,11 @@ interface CharacterServiceInterface
     public function getAll();
 
     /**
+     * Gets all the characters filter by Intelligence
+     */
+    public function getByIntelligence(int $intelligence);
+
+    /**
      * Modifies the characters
      */
     public function modify(Character $character, String $data);

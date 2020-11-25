@@ -102,6 +102,43 @@ class CharacterController extends AbstractController
         return new JsonResponse($character->toArray());
     }
 
+
+    /**
+     * @Route("/character/display/intelligence/{intelligence}",
+     *      name="character_display_intelligence",
+     *      requirements={"intelligence": "^[0-9]{3}$"},
+     *      methods={"GET","HEAD"}
+     * )
+     * @OA\Parameter(
+     *     name="intelligence",
+     *     in="path",
+     *     description="intelligence for the Characters",
+     *     required=true,
+     *     )
+     * @OA\Response(
+     *     response=200,
+     *     description="success",
+     *     @OA\Schema(
+     *          type="array",
+     *          @OA\Items(ref=@Model(type=Character::class))
+     *      )
+     * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Access denied",
+     * )
+     * @OA\Tag(name="Character")
+     */
+    public function displayByIntelligence(int $intelligence)
+    {
+        $this->denyAccessUnLessGranted('characterDisplayIntelligence', null);
+        $characters = $this->characterService->getByIntelligence($intelligence);
+
+        return new JsonResponse($characters);
+    }
+
+
+
     /**
      * @Route("/character/create",
      *      name="character_create",

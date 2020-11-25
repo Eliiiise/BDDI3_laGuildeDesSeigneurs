@@ -34,6 +34,23 @@ class CharacterHtmlController extends AbstractController
     }
 
     /**
+     * @Route("/index2.html/{intelligence}", name="character_index2_html", methods={"GET"})
+     */
+    public function index2(int $intelligence, CharacterRepository $characterRepository): Response
+    {
+        $allCharacters = $characterRepository->findAll();
+        $charactersFinal = [];
+        foreach ($allCharacters as $character){
+            if ($character->toArray()["intelligence"] >= $intelligence) {
+                $charactersFinal[] = $character->toArray();
+            }
+        }
+        return $this->render('character/index2.html.twig', [
+            'characters' => $charactersFinal,
+        ]);
+    }
+
+    /**
      * @Route("/new", name="character_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

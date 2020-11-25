@@ -13,6 +13,7 @@ class CharacterVoter extends Voter
     public const CHARACTER_DISPLAY = 'characterDisplay';
     public const CHARACTER_CREATE = 'characterCreate';
     public const CHARACTER_INDEX = 'characterIndex';
+    public const CHARACTER_DISPLAY_BY_INTELLIGENCE = 'characterDisplayIntelligence';
     public const CHARACTER_MODIFY = 'characterModify';
     public const CHARACTER_DELETE = 'characterDelete';
 
@@ -23,6 +24,7 @@ class CharacterVoter extends Voter
         self::CHARACTER_INDEX,
         self::CHARACTER_MODIFY,
         self::CHARACTER_DELETE,
+        self::CHARACTER_DISPLAY_BY_INTELLIGENCE,
     );
 
     /**
@@ -46,6 +48,7 @@ class CharacterVoter extends Voter
         switch ($attribute) {
             case self::CHARACTER_DISPLAY:
             case self::CHARACTER_INDEX:
+            case self::CHARACTER_DISPLAY_BY_INTELLIGENCE:
                 // peut envoyer $token et $subject pour tester des conditions
                 return $this->canDisplay();
                 break;
